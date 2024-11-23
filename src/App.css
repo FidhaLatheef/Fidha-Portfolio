@@ -1,19 +1,19 @@
 /*--------------GOOGLE FONTS------------*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600&display=swap');
 /*--------------VARIABLES CSS-----------*/
 :root{
   --header-height:3rem;
 /*--------------COLORS------------------*/
 --hue:0;
 --sat:0%;
---title-color:hsl(var(--hue),var(--sat),20%);
---title-color-dark:hsl(var(--hue),var(--sat),0%);
---text-color:hsl(var(--hue),var(--sat),46%);
---body-color:hsl(var(--hue),var(--sat),98%);
---container-color:#fff;
+--title-color: hsl(var(--hue), var(--sat), 20%);
+--title-color-dark: hsl(var(--hue), var(--sat), 0%);
+--text-color: hsl(var(--hue), var(--sat), 46%);
+--body-color: hsl(var(--hue), var(--sat), 98%);
+--container-color: #fff;
 
 /*-------FONT AND TYPOGRAPHY----------*/
---font-family:'Poppins', sans-serif;
+--body-font:"Poppins", sans-serif;
 
 --big-font-size:3.5rem;
 --h1-font-size:2.25rem;
@@ -25,9 +25,9 @@
 --tiny-font-size:0.625rem;
 
 /*---------FONT WEIGHT-----------*/
---font-normal:400;
---font-medium:500;
---font-semi-bold:600;
+--font-normal: 400;
+--font-medium: 500;
+--font-semi-bold: 600;
 
 /*----------MARGENES BOTTOM-------*/
 --mb-0-25:0.25rem;
@@ -63,7 +63,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
 body,
@@ -72,58 +72,59 @@ input,
 textarea{
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
+  font-style: normal;
 }
-body{
+body {
   background-color: var(--body-color);
   color: var(--text-color);
 }
-h1,h2,h3{
+h1 ,h2, h3{
   color: var(--title-color);
   font-weight: var(--font-semi-bold);
 }
-ul{
+ul {
   list-style: none;
 }
-a{
+a {
   text-decoration: none
 }
-button{
+button {
   cursor: pointer;
   border: none;
   outline: none;
 }
-img{
+img {
   max-width: 100%;
   height: auto;
 }
 /*-----------------REUSABLE CSS CLASSESS-----------*/
-.section{
+.section {
   padding: 6rem 0 2rem;
 }
-.section__title{
+.section__title {
   font-size: var(--h1-font-size);
   color: var(--title-color);
 }
-.section__subtitle{
+.section__subtitle {
   display: block;
   font-size: var(--small-font-size);
 }
 .section__title,
-.section__subtitle{
+.section__subtitle {
   text-align: center;
 }
 /*------------------Layout----------------*/
-.container{
+.container {
   max-width: 968px;
   margin-left: auto;
   margin-right: auto;
 }
-.grid{
+.grid {
   display: grid;
   gap: 1.5rem;
 }
 /*------------------Buttons--------------*/
-.button{
+.button {
   display: inline-block;
   background-color: var(--title-color);
   color: var(--container-color);
@@ -131,18 +132,24 @@ img{
   border-radius: 1rem;
   font-weight: var(--font-medium);
 }
-.button:hover{
+.button:hover {
   background-color: var(--title-color-dark);
 }
-.button__icon{
+.button__icon {
   margin-left: var(--mb-0-5);
 }
-.button--flex{
+.button--flex {
   display: inline-flex;
   align-items: center;
 }
 
+
+/*---------------------Break Points--------------*/
 @media screen and (max-width:992px) { 
+  .container {
+    margin-left: var(--mb-1-5);
+    margin-right: var(--mb-1-5);
+  }
 }
 @media screen and (max-width:768px) {
 }
