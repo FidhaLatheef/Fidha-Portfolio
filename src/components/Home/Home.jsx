@@ -9,13 +9,10 @@ function Home() {
     <section className="home section" id="home">
         <div className="home__container container grid" data-aos="fade-up">
             <div className="home__content grid">
-                <Social/>
-                
+                <Social/>              
                 <div className="home__img"></div>
-
                 <Data/>
             </div>
-            
             <ScrollDown/>
         </div>
     </section>

@@ -4,10 +4,10 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import About from './components/About/About';
 
+const App = () => {
 
-const App=()=>{
-  
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -16,10 +16,11 @@ const App=()=>{
   }, []);
   return (
     <>
-    <Header/>
-    <main className='main'>
-      <Home/>
-    </main>
+      <Header />
+      <main className='main'>
+        <Home />
+        <About />
+      </main>
     </>
   )
 }
