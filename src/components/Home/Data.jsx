@@ -59,7 +59,7 @@ function Data() {
       {/* <h3 className="home__subtitle">Front End Developer</h3> */}
       <ReactTypingEffect
         className="home__subtitle"
-        text={["Front End Developer", "Web Designer", "UI/UX Designer"]}
+        text={["Frontend Developer", "Backend Developer", "Web Designer"]}
         speed={100}
         eraseSpeed={100}
         eraseDelay={2000}
