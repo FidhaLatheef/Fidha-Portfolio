@@ -7,7 +7,7 @@ import ScrollDown from './ScrollDown'
 function Home() {
   return (
     <section className="home section" id="home">
-        <div className="home__container container grid" data-aos="fade-up">
+        <div className="home__container container grid" data-aos="fade-down">
             <div className="home__content grid">
                 <Social/>              
                 <div className="home__img"></div>
