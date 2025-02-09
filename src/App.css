@@ -97,6 +97,15 @@ img {
   max-width: 100%;
   height: auto;
 }
+/* Dark Mode Variables */
+body.dark-mode {
+  --title-color: hsl(var(--hue), var(--sat), 85%);
+  --title-color-dark: hsl(var(--hue), var(--sat), 100%);
+  --text-color: hsl(var(--hue), var(--sat), 75%);
+  --body-color: hsl(var(--hue), var(--sat), 10%);
+  --container-color: hsl(var(--hue), var(--sat), 15%);
+}
+
 /*-----------------REUSABLE CSS CLASSESS-----------*/
 .section {
   padding: 6rem 0 2rem;
@@ -132,9 +141,13 @@ img {
   padding: 1.25rem 2rem;
   border-radius: 1rem;
   font-weight: var(--font-medium);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
 .button:hover {
   background-color: var(--title-color-dark);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 .button__icon {
   margin-left: var(--mb-0-5);
