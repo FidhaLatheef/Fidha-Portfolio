@@ -1,28 +1,34 @@
-import React from 'react'
+import React from 'react';
+import { motion } from 'framer-motion';
 
-function info() {
+const boxVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+function Info() {
   return (
     <div className="about__info grid">
-        <div className="about__box">
-        <i className='bx bx-award about__icon'></i>
-
-            <h3 className="about__title">Experience</h3>
-               <span className="about__subtitle">2 Years Working</span> 
-        </div>
-        <div className="about__box">
-        <i className='bx bx-briefcase-alt about__icon'></i>
-
-            <h3 className="about__title">Completed</h3>
-               <span className="about__subtitle">20 + Projects</span> 
-        </div>
-        <div className="about__box">
-        <i className='bx bx-support about__icon'></i>
-
-            <h3 className="about__title">Support</h3>
-               <span className="about__subtitle">Online 24/7</span> 
-        </div>
+      {[
+        { icon: 'bx bx-award', title: 'Experience', subtitle: '2 Years Working' },
+        { icon: 'bx bx-briefcase-alt', title: 'Completed', subtitle: '20 + Projects' },
+        { icon: 'bx bx-support', title: 'Support', subtitle: 'Online 24/7' },
+      ].map((item, index) => (
+        <motion.div
+          key={index}
+          className="about__box"
+          variants={boxVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <i className={`${item.icon} about__icon`}></i>
+          <h3 className="about__title">{item.title}</h3>
+          <span className="about__subtitle">{item.subtitle}</span>
+        </motion.div>
+      ))}
     </div>
-  )
+  );
 }
 
-export default info
+export default Info;
