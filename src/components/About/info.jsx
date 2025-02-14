@@ -1,28 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-function info() {
+function Info() {
+  const infoData = [
+    { icon: 'bx bx-award', title: 'Experience', subtitle: '2 Years Working' },
+    { icon: 'bx bx-briefcase-alt', title: 'Completed', subtitle: '20+ Projects' },
+    { icon: 'bx bx-support', title: 'Support', subtitle: 'Online 24/7' },
+  ];
+
   return (
     <div className="about__info grid">
-        <div className="about__box" data-aos="fade-up">
-        <i className='bx bx-award about__icon'></i>
-
-            <h3 className="about__title">Experience</h3>
-               <span className="about__subtitle">2 Years Working</span> 
+      {infoData.map((item, index) => (
+        <div key={index} className="about__box" data-aos="fade-up">
+          <i className={`${item.icon} about__icon`}></i>
+          <h3 className="about__title">{item.title}</h3>
+          <span className="about__subtitle">{item.subtitle}</span>
         </div>
-        <div className="about__box" data-aos="fade-up">
-        <i className='bx bx-briefcase-alt about__icon'></i>
-
-            <h3 className="about__title">Completed</h3>
-               <span className="about__subtitle">20 + Projects</span> 
-        </div>
-        <div className="about__box" data-aos="fade-up"> 
-        <i className='bx bx-support about__icon'></i>
-
-            <h3 className="about__title">Support</h3>
-               <span className="about__subtitle">Online 24/7</span> 
-        </div>
+      ))}
     </div>
-  )
+  );
 }
 
-export default info
+export default Info;

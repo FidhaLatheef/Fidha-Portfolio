@@ -17,7 +17,9 @@ function About() {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }} >
+
         <img src={AboutImg} alt="" className="about__img" data-aos="fade-up" />
+        
         <div className="about__data">
           <Info />
           <p className="about__description" data-aos="fade-down">

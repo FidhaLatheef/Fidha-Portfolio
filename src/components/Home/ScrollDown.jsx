@@ -14,13 +14,13 @@ function ScrollDown() {
                     xmlnsXlink="http://www.w3.org/1999/xlink"
                     style={{
                         fillRule: "evenodd",
-                  clipRule: "evenodd",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round",
-                  strokeMiterlimit: "1.5",
+                        clipRule: "evenodd",
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeMiterlimit: "1.5",
                     }}
-                  
-                
+
+
                 >
                     <path
                         className="wheel"
@@ -30,8 +30,8 @@ function ScrollDown() {
                             stroke: "var(--title-color)",
                             strokeWidth: "20px",
                         }}
-                    
-                  
+
+
                     ></path>
                     <path
                         id="mouse"

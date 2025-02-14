@@ -56,7 +56,6 @@ function Data() {
           ></path>
         </svg>
       </h1>
-      {/* <h3 className="home__subtitle">Front End Developer</h3> */}
       <ReactTypingEffect
         className="home__subtitle"
         text={["Frontend Developer", "Backend Developer", "Web Designer"]}
