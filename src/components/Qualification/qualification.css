@@ -35,7 +35,6 @@
     margin-top: 2rem;
 }
 
-/* Timeline Customization */
 .vertical-timeline-element--education .vertical-timeline-element-content {
     background: var(--container-color);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
