@@ -44,7 +44,7 @@ function Header() {
 
           <ul className="nav__list grid">
 
-            {['Home', 'About', 'Skills', 'Services', 'Portfolio', 'Contact'].map((item, index) => (
+            {['Home', 'About', 'Skills', 'Services', 'Qualification', 'Contact'].map((item, index) => (
               <li className="nav__item" key={index}>
                 <a href={`#${item.toLocaleLowerCase()}`} className="nav__link">
                   <span className="nav__heads">{item}</span>
