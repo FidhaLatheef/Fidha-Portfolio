@@ -24,12 +24,23 @@
     padding: 1rem;
     border-radius: 0.75rem;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact__card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .contact__card-icon {
     font-size: 2rem;
     color: var(--title-color);
     margin-bottom: var(--mb-0-25);
+    transition: color 0.3s ease;
+}
+
+.contact__card:hover .contact__card-icon {
+    color: var(--primary-color);
 }
 
 .contact__card-title,
@@ -53,16 +64,20 @@
     align-items: center;
     justify-content: center;
     column-gap: 0.25rem;
+    transition: color 0.3s ease;
+}
+
+.contact__button:hover {
+    color: var(--primary-color);
 }
 
 .contact__button-icon {
     font-size: 1.25rem;
-    transition: 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .contact__button:hover .contact__button-icon {
-    transform: translate(0.25rem);
-    color: var(--title-color);
+    transform: translateX(0.25rem);
 }
 
 .contact__form {
@@ -88,6 +103,11 @@
     border-radius: 0.75rem;
     padding: 1.5rem;
     z-index: 1;
+    transition: border-color 0.3s ease;
+}
+
+.contact__form-input:focus {
+    border-color: var(--primary-color);
 }
 
 .contact__form-tag {
@@ -108,15 +128,47 @@
     resize: none;
 }
 
+.button--flex {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.error-message {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 0;
+    color: #da0505;
+    font-size: 0.75rem;
+    text-align: right;
+}
+
+/* Toast Notification Styles */
+.toast-success {
+    background: var(--title-color) !important;
+    color: var(--container-color) !important;
+    font-weight: 500;
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+}
+
+.toast-error {
+    background: #b40404 !important;
+    color: var(--container-color) !important;
+    font-weight: 500;
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+}
 
 /*---------------------Break Points--------------*/
-@media screen and (max-width:992px) {
+@media screen and (max-width: 992px) {
     .contact__container {
         column-gap: 3rem;
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
     .contact__container {
         grid-template-columns: 1fr;
         row-gap: 3rem;
@@ -131,7 +183,7 @@
     }
 }
 
-@media screen and (max-width:576px) {
+@media screen and (max-width: 576px) {
     .contact__info {
         grid-template-columns: 1fr;
     }

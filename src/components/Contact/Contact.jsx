@@ -1,10 +1,56 @@
-import React from 'react'
-import "./contact.css"
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import toast, { Toaster } from 'react-hot-toast';
+import emailjs from '@emailjs/browser';
+import "./contact.css";
 
 function Contact() {
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm();
+
+    const sendEmail = async (data) => {
+        const templateParams = {
+            name: data.name,
+            email: data.email,
+            project: data.project
+        };
+
+        const toastLoadingId = toast.loading('Sending message...');
+
+        try {
+            await emailjs.send(
+                'service_u1rharn',
+                'template_dzc27vi',
+                templateParams,
+                '6cW-R6IErcmpBlEFY'
+            );
+            
+            toast.success('Message sent successfully!', {
+                id: toastLoadingId,
+                duration: 4000,
+                className: 'toast-success',
+                icon: '🎉'
+            });
+            reset();
+        } catch (error) {
+            console.error('Failed to send message:', error);
+            toast.error('Failed to send message. Please try again.', {
+                id: toastLoadingId,
+                duration: 4000,
+                className: 'toast-error',
+                icon: '❌'
+            });
+        }
+    };
+
     return (
-        <section className="contact setion" id="contact">
-            <h2 className="section__title">Contacts</h2>
+        <section className="contact section" id="contact">
+            <Toaster position="top-right" />
+            <h2 className="section__title">Contact</h2>
             <span className="section__subtitle">Get in touch</span>
 
             <div className="contact__container container grid">
@@ -12,82 +58,100 @@ function Contact() {
                     <h3 className="contact__title">Talk to me</h3>
 
                     <div className="contact__info">
-
-                        <div className="contact__card">
-                            <i className="bx bx-mail-send contact__card-icon"></i>
-                            <h3 className="contact__card-title">Email</h3>
-                            <span className="contact__card-data">fidhalatheefm@gmail.com</span>
-
-                            <a href="mailto:fidhalatheefm@gmail.com" className="contact__button">Write me
-                                <i className="bx bx-right-arrow-alt 
-                                contact__button-icon"></i>
-                            </a>
-                        </div>
-
-                        <div className="contact__card">
-                            <i className="bx bxl-whatsapp contact__card-icon"></i>
-                            <h3 className="contact__card-title">Whatsapp</h3>
-                            <span className="contact__card-data">8714234014</span>
-
-                            <a
-                                href="https://wa.me/+918714234014?text=Hello%20Fidha,%20I%20would%20like%20to%20get%20in%20touch%20with%20you."
-                                className="contact__button"
-                            > Write me
-                                <i className="bx bx-right-arrow-alt 
-                                contact__button-icon"></i>
-                            </a>
-                        </div>
-
-                        <div className="contact__card">
-                            <i className="bx bxl-instagram contact__card-icon"></i>
-                            <h3 className="contact__card-title">Instagram</h3>
-                            <span className="contact__card-data">_f1.dha._</span>
-
-                            <a href="https://www.instagram.com/_f1.dha._" 
-                            className="contact__button"
-                            >Write me
-                                <i className="bx bx-right-arrow-alt contact__button-icon"></i>
-                            </a>
-                        </div>
+                        {[
+                            {
+                                icon: 'bx bx-mail-send',
+                                title: 'Email',
+                                data: 'fidhalatheefm@gmail.com',
+                                link: 'mailto:fidhalatheefm@gmail.com',
+                            },
+                            {
+                                icon: 'bx bxl-whatsapp',
+                                title: 'Whatsapp',
+                                data: '8714234014',
+                                link: 'https://wa.me/+918714234014?text=Hello%20Fidha,%20I%20would%20like%20to%20get%20in%20touch%20with%20you.',
+                            },
+                            {
+                                icon: 'bx bxl-instagram',
+                                title: 'Instagram',
+                                data: '_f1.dha._',
+                                link: 'https://www.instagram.com/_f1.dha._',
+                            },
+                        ].map((item, index) => (
+                            <div className="contact__card" key={index}>
+                                <i className={`${item.icon} contact__card-icon`}></i>
+                                <h3 className="contact__card-title">{item.title}</h3>
+                                <span className="contact__card-data">{item.data}</span>
+                                <a href={item.link} className="contact__button">
+                                    Write me <i className="bx bx-right-arrow-alt contact__button-icon"></i>
+                                </a>
+                            </div>
+                        ))}
                     </div>
                 </div>
+
                 <div className="contact__content">
                     <h3 className="contact__title">Write me your project</h3>
 
-                    <form className="contact__form">
+                    <form onSubmit={handleSubmit(sendEmail)} className="contact__form">
                         <div className="contact__form-div">
                             <label className="contact__form-tag">Name</label>
                             <input
                                 type="text"
-                                name='name'
-                                className="contact__form-input"
-                                id="name"
-                                placeholder="Insert Your name"
+                                className={`contact__form-input ${errors.name ? 'input-error' : ''}`}
+                                placeholder="Insert your name"
+                                {...register('name', {
+                                    required: 'Name is required',
+                                    minLength: {
+                                        value: 2,
+                                        message: 'Name must be at least 2 characters'
+                                    }
+                                })}
                             />
-                        </div>
-                        <div className="contact__form-div">
-                            <label className="contact__form-tag" >Email</label>
-                            <input
-                                type="email"
-                                name='email'
-                                className="contact__form-input"
-                                id="email"
-                                placeholder="Insert Your email"
-                            />
-                        </div>
-                        <div className="contact__form-div contact__form-area">
-                            <label className="contact__form-tag" >Project</label>
-                            <textarea
-                                name="project"
-                                id="project"
-                                cols={30}
-                                rows={10}
-                                className="contact__form-input"
-                                placeholder="Insert Your project"
-                            ></textarea>
+                            {errors.name && (
+                                <span className="error-message">{errors.name.message}</span>
+                            )}
                         </div>
 
-                        <button href="#contact" className="button button--flex">
+                        <div className="contact__form-div">
+                            <label className="contact__form-tag">Email</label>
+                            <input
+                                type="email"
+                                className={`contact__form-input ${errors.email ? 'input-error' : ''}`}
+                                placeholder="Insert your email"
+                                {...register('email', {
+                                    required: 'Email is required',
+                                    pattern: {
+                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                        message: 'Invalid email address'
+                                    }
+                                })}
+                            />
+                            {errors.email && (
+                                <span className="error-message">{errors.email.message}</span>
+                            )}
+                        </div>
+
+                        <div className="contact__form-div contact__form-area">
+                            <label className="contact__form-tag">Project</label>
+                            <textarea
+                                className={`contact__form-input ${errors.project ? 'input-error' : ''}`}
+                                placeholder="Insert your project"
+                                rows="10"
+                                {...register('project', {
+                                    required: 'Project description is required',
+                                    minLength: {
+                                        value: 10,
+                                        message: 'Please provide more details (minimum 10 characters)'
+                                    }
+                                })}
+                            ></textarea>
+                            {errors.project && (
+                                <span className="error-message">{errors.project.message}</span>
+                            )}
+                        </div>
+
+                        <button type="submit" className="button button--flex">
                             Send Message
                             <svg
                                 className="button__icon"
@@ -111,7 +175,7 @@ function Contact() {
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
-export default Contact
+export default Contact;
