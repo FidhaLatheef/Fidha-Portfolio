@@ -71,12 +71,12 @@ function Contact() {
                                 data: '8714234014',
                                 link: 'https://wa.me/+918714234014?text=Hello%20Fidha,%20I%20would%20like%20to%20get%20in%20touch%20with%20you.',
                             },
-                            {
-                                icon: 'bx bxl-instagram',
-                                title: 'Instagram',
-                                data: '_f1.dha._',
-                                link: 'https://www.instagram.com/_f1.dha._',
-                            },
+                            // {
+                            //     icon: 'bx bxl-instagram',
+                            //     title: 'Instagram',
+                            //     data: '_f1.dha._',
+                            //     link: 'https://www.instagram.com/_f1.dha._',
+                            // },
                         ].map((item, index) => (
                             <div className="contact__card" key={index}>
                                 <i className={`${item.icon} contact__card-icon`}></i>

@@ -91,6 +91,12 @@
   .nav__close:hover {
     color: var(--title-color-dark);
   }
+
+  /*----------Change backgnd header--------*/
+.show-header {
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+}
+
 /*---------------------Break Points--------------*/
 @media screen and (max-width:768px) {
     .header {
